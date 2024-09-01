@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const propiedadesController = require("../controllers/propiedadesController");
+const usuarioController = require("../controllers/usuariosController");
 //defino las rutas
 module.exports = function () {
   //PROPIEDADES
@@ -32,5 +33,12 @@ module.exports = function () {
     "/propiedades/:idPropiedad",
     propiedadesController.eliminarPropiedad
   );
+
+  //USUARIOS
+  //agregar un nuevo usuario
+  router.post("/crear-cuenta", usuarioController.registrarUsuario);
+
+  router.post("/iniciar-sesion", usuarioController.autenticarUsuario);
+
   return router;
 };
