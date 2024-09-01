@@ -10,5 +10,27 @@ module.exports = function () {
     propiedadesController.subirArchivo,
     propiedadesController.agregarPropiedades
   );
+
+  //mostrar todas las propiedades
+  router.get("/propiedades", propiedadesController.mostrarPropiedades);
+
+  //mostrar una propiedad por id
+  router.get(
+    "/propiedades/:idPropiedad",
+    propiedadesController.mostrarPropiedad
+  );
+
+  //actualizar una propiedad
+  router.put(
+    "/propiedades/:idPropiedad",
+    propiedadesController.subirArchivo,
+    propiedadesController.actualizarPropiedad
+  );
+
+  //eliminar una propiedad
+  router.delete(
+    "/propiedades/:idPropiedad",
+    propiedadesController.eliminarPropiedad
+  );
   return router;
 };
