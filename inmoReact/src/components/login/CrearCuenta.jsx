@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import usuarioAxios from "../../config/axios";
 
 export const CrearCuenta = () => {
   const [datos, setDatos] = useState({

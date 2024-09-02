@@ -1,11 +1,17 @@
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import usuarioAxios from "../../config/axios";
+import datosAxios from "../../config/axios";
+
+//importar el context
+import { CRMContext } from "../../context/CRMContext";
 
 export const Form = () => {
   const navigate = useNavigate(); // Inicializa el hook
   const [datos, setDatos] = useState({});
+  //auth y token
+  const [auth, setAuth] = useContext(CRMContext);
 
   //almacenar lo que el usuario escribe en los input
   const handleLeerDatos = (e) => {
@@ -19,11 +25,15 @@ export const Form = () => {
   const iniciarSesion = async (e) => {
     e.preventDefault();
     try {
-      const respuesta = await usuarioAxios.post("/iniciar-sesion", datos);
-      //extraer el token y colocarlo en el localStorage
+      const respuesta = await datosAxios.post("/iniciar-sesion", datos);
+      //extraer el token y colocarlo en el localStorage y en el state del context
       const token = respuesta.data;
 
       localStorage.setItem("token", token);
+      setAuth({
+        token: respuesta.token,
+        auth: true,
+      });
 
       //alerta inciar sesion OK
       Swal.fire({

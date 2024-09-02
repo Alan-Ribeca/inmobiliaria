@@ -16,7 +16,7 @@ module.exports = function () {
   );
 
   //mostrar todas las propiedades
-  router.get("/propiedades", auth, propiedadesController.mostrarPropiedades);
+  router.get("/propiedades", propiedadesController.mostrarPropiedades);
 
   //mostrar una propiedad por id
   router.get(
