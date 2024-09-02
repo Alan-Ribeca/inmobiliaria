@@ -18,7 +18,6 @@ export const Propiedad = ({ propiedad }) => {
     imagenes,
   } = propiedad;
 
-  console.log(imagenes);
   return (
     <>
       <section className="containerProp">
