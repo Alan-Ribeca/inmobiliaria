@@ -14,6 +14,7 @@ const CRMProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
@@ -23,7 +24,7 @@ const CRMProvider = ({ children }) => {
           email: decodedToken.email,
         });
       } catch (error) {
-        console.log(error);
+        console.error("Error al decodificar el token:", error);
         setAuth({
           token: "",
           auth: false,
@@ -40,13 +41,34 @@ const CRMProvider = ({ children }) => {
   }, [localStorage.getItem("token")]);
 
   const setAuthToken = (token) => {
-    localStorage.setItem("token", token);
-    setAuth({
-      token,
-      auth: true,
-      email: jwtDecode(token).email,
-    });
+    if (typeof token === "string" && token.trim() !== "") {
+      try {
+        const decodedToken = jwtDecode(token);
+        localStorage.setItem("token", token);
+        setAuth({
+          token,
+          auth: true,
+          email: decodedToken.email,
+        });
+      } catch (error) {
+        console.error(error);
+        setAuth({
+          token: "",
+          auth: false,
+          email: null,
+        });
+      }
+    } else {
+      // Si el token no es válido o no existe, limpiamos el auth state
+      localStorage.removeItem("token");
+      setAuth({
+        token: "",
+        auth: false,
+        email: null,
+      });
+    }
   };
+
   return (
     <CRMContext.Provider value={[auth, setAuthToken]}>
       {children}

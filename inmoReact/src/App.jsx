@@ -7,6 +7,8 @@ import { CrearCuenta } from "./components/login/CrearCuenta";
 import { EditarCuenta } from "./components/login/EditarCuenta";
 import { CRMContext, CRMProvider } from "./context/CRMContext";
 import { Propiedades } from "./components/propiedades/Propiedades";
+import { SubirProductos } from "./components/admin/SubirProductos";
+import { EditarPropiedades } from "./components/admin/EditarPropiedades";
 function App() {
   //utilizar context9
   const [auth, setAuth] = useContext(CRMContext);
@@ -34,6 +36,10 @@ function App() {
 
             {/* PROPIEDADES */}
             <Route path="/propiedades" element={<Propiedades />} />
+
+            {/* Admin */}
+            <Route path="/subirProductos" element={<SubirProductos />} />
+            <Route path="/editarProductos" element={<EditarPropiedades />} />
           </Routes>
         </main>
       </CRMProvider>

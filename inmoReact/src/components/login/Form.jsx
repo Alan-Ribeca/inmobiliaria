@@ -1,4 +1,4 @@
- 
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -10,7 +10,8 @@ import { CRMContext } from "../../context/CRMContext";
 export const Form = () => {
   const navigate = useNavigate();
   const [datos, setDatos] = useState({});
-  const [, setAuthToken] = useContext(CRMContext);
+
+  const [auth, setAuthToken] = useContext(CRMContext);
 
   const handleLeerDatos = (e) => {
     setDatos({
@@ -83,7 +84,12 @@ export const Form = () => {
       </div>
 
       <div className="recordar">
-        <input type="checkbox" name="recordar" className="recordar" />
+        <input
+          type="checkbox"
+          id="recordar"
+          name="recordar"
+          className="recordar"
+        />
         <label htmlFor="recordar">Recordarme</label>
       </div>
       <button type="submit">Iniciar Sesión</button>
