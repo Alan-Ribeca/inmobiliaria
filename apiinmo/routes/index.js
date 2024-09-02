@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const propiedadesController = require("../controllers/propiedadesController");
 const usuarioController = require("../controllers/usuariosController");
+//middleware para proteger las rutas
+const auth = require("../middleware/auth");
+
 //defino las rutas
 module.exports = function () {
   //PROPIEDADES
@@ -13,7 +16,7 @@ module.exports = function () {
   );
 
   //mostrar todas las propiedades
-  router.get("/propiedades", propiedadesController.mostrarPropiedades);
+  router.get("/propiedades", auth, propiedadesController.mostrarPropiedades);
 
   //mostrar una propiedad por id
   router.get(

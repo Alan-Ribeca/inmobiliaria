@@ -14,6 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/apiinmo");
 
+//habilitar cors
+const cors = require("cors");
+
+//habilitar cors
+app.use(cors());
+
 // rutas de la app
 app.use("/", routes());
 
