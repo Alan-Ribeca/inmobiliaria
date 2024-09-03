@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./losEstilos/crearCuenta.scss";
 
 export const CrearCuenta = () => {
   const [datos, setDatos] = useState({
@@ -24,7 +25,11 @@ export const CrearCuenta = () => {
   };
 
   return (
-    <form action="">
+    <form className="crearCuentaContainer">
+      <h1 className="titleCrearCuenta">Crear Cuenta</h1>
+      <p className="registrarse">
+        Complete el formulario para crear una cuenta
+      </p>
       <div className="campo">
         <label>Email</label>
         <svg
@@ -32,7 +37,7 @@ export const CrearCuenta = () => {
           width="16"
           height="16"
           fill="currentColor"
-          className="bi bi-envelope-at"
+          className="logo"
           viewBox="0 0 16 16"
         >
           <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z" />
@@ -43,9 +48,9 @@ export const CrearCuenta = () => {
           placeholder="ejemplo@gmail.com"
           name="email"
           onChange={handleLeerDatos}
+          className="input"
         />
       </div>
-
       <div className="campo">
         <label>Usuario</label>
         <svg
@@ -53,7 +58,7 @@ export const CrearCuenta = () => {
           width="16"
           height="16"
           fill="currentColor"
-          className="bi bi-person"
+          className="logo"
           viewBox="0 0 16 16"
         >
           <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
@@ -63,9 +68,9 @@ export const CrearCuenta = () => {
           placeholder="Usuario"
           name="usuario"
           onChange={handleLeerDatos}
+          className="input"
         />
       </div>
-
       <div className="campo">
         <label>Contraseña</label>
         <svg
@@ -73,7 +78,7 @@ export const CrearCuenta = () => {
           width="16"
           height="16"
           fill="currentColor"
-          className="bi bi-lock"
+          className="logo"
           viewBox="0 0 16 16"
         >
           <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
@@ -83,10 +88,15 @@ export const CrearCuenta = () => {
           placeholder="Introduzca su contraseña"
           name="password"
           onChange={handleLeerDatos}
+          className="input"
         />
       </div>
-
-      <button type="submit" onClick={handleCrearCuenta}>
+      <div className="invisible"></div>
+      <button
+        type="submit"
+        onClick={handleCrearCuenta}
+        className="btnCrearCuenta"
+      >
         Crear cuenta
       </button>
     </form>
