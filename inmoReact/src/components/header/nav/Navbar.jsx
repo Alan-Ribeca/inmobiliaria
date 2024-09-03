@@ -28,21 +28,38 @@ export const Navbar = () => {
   return (
     <>
       {auth.email === "alan@gmial.com" ? (
-        <nav className="navadmin">
-          <ul className="ulAdmin">
-            <li className="liAdmin">
-              <Link to="/">Inicio</Link>
+        <nav className="nav">
+          <div className="logo">
+            <p className="nombre">
+              Inmo<span className="span">Home</span>{" "}
+            </p>
+          </div>
+          <ul className="ulNav">
+            <li className="liNav">
+              <Link to="/" className="enlaces">
+                Inicio
+              </Link>
             </li>
-            <li className="liAdmin">
-              <Link to="/subirProductos">Agregar proopiedades</Link>
+            <li className="liNav">
+              {" "}
+              <Link to="/propiedades" className="enlaces">
+                Agregar proopiedades
+              </Link>
             </li>
-            <li className="liAdmin">
-              <Link to="/editarProductos">Editar propiedades</Link>
+            <li className="liNav">
+              <Link to="/servicios" className="enlaces">
+                Editar propiedades
+              </Link>
             </li>
-            <button className="btnSesion" onClick={handleCerrarSesion}>
-              Cerrar sesion
-            </button>
           </ul>
+          <Link to="/login">
+            <button onClick={handleCerrarSesion}>
+              <span className="btnSesion">
+                {autenticado ? "Cerrar sesion" : "Iniciar sesion"}
+              </span>
+            </button>
+          </Link>
+          <hr className="linea" />
         </nav>
       ) : (
         <>
@@ -54,27 +71,40 @@ export const Navbar = () => {
             </div>
             <ul className="ulNav">
               <li className="liNav">
-                <Link to="/">Inicio</Link>
+                <Link to="/" className="enlaces">
+                  Inicio
+                </Link>
               </li>
               <li className="liNav">
                 {" "}
-                <Link to="/propiedades">Propiedades</Link>
+                <Link to="/propiedades" className="enlaces">
+                  Propiedades
+                </Link>
               </li>
               <li className="liNav">
-                <Link to="/servicios">Servicios</Link>
+                <Link to="/servicios" className="enlaces">
+                  Servicios
+                </Link>
               </li>
               <li className="liNav">
-                <Link to="/nosotros">Nosotros</Link>
+                <Link to="/nosotros" className="enlaces">
+                  Nosotros
+                </Link>
               </li>
               <li className="liNav">
-                <Link to="/contacto">Contacto</Link>
+                <Link to="/contacto" className="enlaces">
+                  Contacto
+                </Link>
               </li>
             </ul>
             <Link to="/login">
               <button onClick={handleCerrarSesion}>
-                <span className="btnSesion">{autenticado ? "Cerrar sesion" : "Iniciar sesion"}</span>
+                <span className="btnSesion">
+                  {autenticado ? "Cerrar sesion" : "Iniciar sesion"}
+                </span>
               </button>
             </Link>
+            <hr className="linea" />
           </nav>
         </>
       )}

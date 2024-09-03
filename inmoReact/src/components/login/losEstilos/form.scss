@@ -1,0 +1,56 @@
+.formIniciarSesion {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+
+  .campo {
+    padding: 0.5rem 0;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    label {
+      margin-bottom: 0.3rem;
+    }
+
+    .logo {
+      position: absolute;
+      bottom: 24%;
+      fill: #757575;
+      padding-left: 0.4rem;
+    }
+
+    .input {
+      height: 2.2rem;
+      border-radius: 6px;
+      border: 1px solid #999;
+      padding-left: 1.8rem;
+    }
+  }
+
+  .recordar {
+    margin: 0 0 1rem 1rem;
+    display: flex;
+    align-items: center;
+
+    .label {
+      padding-left: 0.3rem;
+    }
+  }
+
+  .btnForm {
+    width: 200px;
+    margin: 0 auto;
+    height: 2rem;
+    background-color: black;
+    border: none;
+    color: white;
+    font-weight: 600;
+    transform: skew(-21deg);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

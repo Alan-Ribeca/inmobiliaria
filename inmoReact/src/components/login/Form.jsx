@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import datosAxios from "../../config/axios";
-import './losEstilos/form.scss'
+import "./losEstilos/form.scss";
 
 //importar el context
 import { CRMContext } from "../../context/CRMContext";
@@ -42,7 +42,7 @@ export const Form = () => {
   };
 
   return (
-    <form onSubmit={iniciarSesion}>
+    <form onSubmit={iniciarSesion} className="formIniciarSesion">
       <div className="campo">
         <label>Email</label>
         <svg
@@ -50,7 +50,7 @@ export const Form = () => {
           width="16"
           height="16"
           fill="currentColor"
-          className="bi bi-envelope-at"
+          className="logo"
           viewBox="0 0 16 16"
         >
           <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z" />
@@ -61,6 +61,7 @@ export const Form = () => {
           name="email"
           placeholder="ejemplo@gmail.com"
           onChange={handleLeerDatos}
+          className="input"
         />
       </div>
 
@@ -71,7 +72,7 @@ export const Form = () => {
           width="16"
           height="16"
           fill="currentColor"
-          className="bi bi-lock"
+          className="logo"
           viewBox="0 0 16 16"
         >
           <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
@@ -81,6 +82,7 @@ export const Form = () => {
           placeholder="Introduzca su contraseña"
           name="password"
           onChange={handleLeerDatos}
+          className="input"
         />
       </div>
 
@@ -89,11 +91,15 @@ export const Form = () => {
           type="checkbox"
           id="recordar"
           name="recordar"
-          className="recordar"
+          className="recordarInput"
         />
-        <label htmlFor="recordar">Recordarme</label>
+        <label htmlFor="recordar" className="label">
+          Recordarme
+        </label>
       </div>
-      <button type="submit">Iniciar Sesión</button>
+      <button type="submit" className="btnForm">
+        Iniciar Sesión
+      </button>
     </form>
   );
 };

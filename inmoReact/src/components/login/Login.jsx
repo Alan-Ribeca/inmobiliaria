@@ -1,5 +1,6 @@
 import { Form } from "./Form";
 import { Link } from "react-router-dom";
+import './losEstilos/login.scss'
 export const Login = () => {
   return (
     <>
