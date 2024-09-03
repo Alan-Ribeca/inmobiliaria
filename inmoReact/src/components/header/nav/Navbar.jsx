@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { CRMContext } from "../../../context/CRMContext";
+import "./navBar.scss";
 export const Navbar = () => {
   const navigate = useNavigate();
   const [auth, setAuth] = useContext(CRMContext);
@@ -46,6 +47,11 @@ export const Navbar = () => {
       ) : (
         <>
           <nav className="nav">
+            <div className="logo">
+              <p className="nombre">
+                Inmo<span className="span">Home</span>{" "}
+              </p>
+            </div>
             <ul className="ulNav">
               <li className="liNav">
                 <Link to="/">Inicio</Link>
@@ -63,13 +69,12 @@ export const Navbar = () => {
               <li className="liNav">
                 <Link to="/contacto">Contacto</Link>
               </li>
-
-              <Link to="/login">
-                <button className="btnSesion" onClick={handleCerrarSesion}>
-                  {autenticado ? "Cerrar sesion" : "Iniciar sesion"}
-                </button>
-              </Link>
             </ul>
+            <Link to="/login">
+              <button onClick={handleCerrarSesion}>
+                <span className="btnSesion">{autenticado ? "Cerrar sesion" : "Iniciar sesion"}</span>
+              </button>
+            </Link>
           </nav>
         </>
       )}

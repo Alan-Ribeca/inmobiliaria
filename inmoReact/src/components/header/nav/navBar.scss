@@ -1,0 +1,83 @@
+.nav {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  margin-bottom: 5rem;
+
+  position: relative;
+
+  .logo {
+    display: block;
+    margin: 0;
+    position: relative;
+
+    .nombre {
+      font-size: 2rem;
+
+      .span {
+        position: absolute;
+        top: 63%;
+        left: 45%;
+      }
+    }
+  }
+
+  .ulNav {
+    position: absolute;
+    right: 30%;
+    display: flex;
+    list-style: none;
+
+    .liNav {
+      margin: 0 2rem;
+      cursor: pointer;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    right: 5%;
+    top: 29%;
+    background: #fff;
+    border: none;
+    padding: 10px 20px;
+    display: inline-block;
+    font-weight: 600;
+    width: 150px;
+    cursor: pointer;
+    transform: skew(-21deg);
+  }
+
+  .btnSesion {
+    display: inline-block;
+    transform: skew(21deg);
+  }
+
+  button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: 0;
+    background: rgb(20, 20, 20);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+  }
+
+  button:hover {
+    color: #fff;
+  }
+
+  button:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
+}

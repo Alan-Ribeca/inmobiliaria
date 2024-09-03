@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import datosAxios from "../../config/axios";
+import './losEstilos/form.scss'
 
 //importar el context
 import { CRMContext } from "../../context/CRMContext";

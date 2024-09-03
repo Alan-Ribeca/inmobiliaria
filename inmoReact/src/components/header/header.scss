@@ -1,0 +1,13 @@
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  height: 7rem;
+  top: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(9px);
+}
+
+.oculto {
+  height: 10rem;
+}
