@@ -1,0 +1,13 @@
+.titlePropiedades {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.containerCard {
+  display: grid;
+  row-gap: 4.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  margin-top: 3rem;
+}

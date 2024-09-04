@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBath, faBed } from "@fortawesome/free-solid-svg-icons";
+import "./propiedad.scss";
 export const Propiedad = ({ propiedad }) => {
   const {
     titulo,
@@ -20,25 +21,41 @@ export const Propiedad = ({ propiedad }) => {
 
   return (
     <>
-      <section className="containerProp">
-        <div className="imagenesProp">
-          {imagenes.length > 0 && (
-            <img
-              src={`http://localhost:2000/uploads/${imagenes[0]}`} // Asumiendo que imágenes[0] es el nombre del archivo
-              alt="Imagen de propiedad"
-              className="imgPropiedad" // Añade tu clase CSS si la necesitas
-            />
-          )}
-        </div>
+      <section
+        className="containerProp"
+        style={{
+          backgroundImage: `url(http://localhost:2000/uploads/${imagenes[0]})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          width: "450px",
+          height: "490px",
+        }}
+      >
+        <div className="colorGris"></div>
         <h2 className="titleProp">{titulo}</h2>
-        <p className="ubicacion">{ubicacion}</p>
+        <div className="descripcion">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="ubiLogo"
+            viewBox="0 0 16 16"
+          >
+            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+          </svg>
+          <p className="ubicacion">{ubicacion}</p>
+        </div>
         <div className="containerInfo">
           <div className="precios">
-            <p className="preNumero">${precioPropiedad} ARS</p>
+            <p className="preNumero">
+              <strong className="signo">$</strong> {precioPropiedad}{" "}
+              <strong className="moneda">ARS</strong>
+            </p>
             {expensas == null ? (
               ""
             ) : (
-              <p className="conExpensa">+ ${expensas} ARS expensas</p>
+              <p className="conExpensa">+ ${expensas} expensas</p>
             )}
           </div>
 
@@ -47,7 +64,7 @@ export const Propiedad = ({ propiedad }) => {
               <li className="liInfo">
                 <FontAwesomeIcon
                   icon={faBath}
-                  style={{ fontSize: "1.4rem", color: "black" }}
+                  style={{ fontSize: "16px", color: "white" }}
                 />
                 <span> {banos} Baños</span>
               </li>
@@ -71,7 +88,57 @@ export const Propiedad = ({ propiedad }) => {
             </ul>
           </div>
         </div>
-        <button className="btnInfo">Ver detalles</button>
+        <button className="btnInfo">
+          Ver mas detalles{" "}
+          <span className="flecha">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="flechasvg"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
+              />
+            </svg>
+          </span>
+        </button>
+        <div className="puntos">
+          <span className="punto"></span>
+          <span className="punto marcado"></span>
+          <span className="punto"></span>
+        </div>
+        <div className="flechaImg">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="currentColor"
+            className="flechaCambiar izquierda"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fillRule="evenodd"
+              d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="currentColor"
+            className="flechaCambiar derecha"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fillRule="evenodd"
+              d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
+            />
+          </svg>
+        </div>
       </section>
     </>
   );

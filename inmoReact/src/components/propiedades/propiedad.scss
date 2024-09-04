@@ -1,0 +1,154 @@
+.containerProp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 7px;
+  overflow: hidden;
+  padding-bottom: 0.5rem;
+  box-shadow: 0px 1px 2px 1px rgba(192, 192, 192, 0.24);
+
+  .colorGris {
+    background: linear-gradient(
+      to top,
+      rgb(64 64 64 / 71%),
+      rgba(192, 192, 192, 0)
+    );
+    position: absolute;
+    width: 100%;
+    height: 108%;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+  }
+
+  .titleProp {
+    font-size: 2.5rem;
+    margin-left: 1rem;
+    z-index: 2;
+    color: white;
+  }
+  .descripcion {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    z-index: 2;
+    margin-bottom: 0.8rem;
+
+    .ubicacion {
+      margin-left: 0.3rem;
+      color: white;
+      font-weight: 600;
+    }
+  }
+  .containerInfo {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+
+    .precios {
+      z-index: 2;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .signo {
+        color: #05be05;
+      }
+      .preNumero {
+        color: white;
+        font-weight: 800;
+        font-size: x-large;
+      }
+
+      .conExpensa {
+        margin-left: 0.8rem;
+        color: #f0f0f0;
+        font-size: 0.8rem;
+      }
+    }
+    .info {
+      z-index: 2;
+      ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-around;
+        align-items: center;
+
+        .liInfo {
+          color: #f0f0f0;
+        }
+      }
+    }
+  }
+
+  .btnInfo {
+    margin: 0 auto;
+    margin-bottom: 0.8rem;
+    background-color: white;
+    z-index: 2;
+    width: 300px;
+    height: 2.5rem;
+    border: none;
+    border-radius: 7px;
+    font-weight: 700;
+
+    .flecha {
+      display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      .flecha {
+        display: block;
+      }
+    }
+  }
+
+  .puntos {
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    margin-bottom: 0.3rem;
+    .punto {
+      height: 8px;
+      width: 8px;
+      margin: 0 8px;
+      background-color: #c4c4c4;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointe8;
+
+      &.marcado {
+        background-color: white;
+      }
+    }
+  }
+
+  .flechaImg {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .flechaCambiar {
+      fill: #f6e7e7;
+      z-index: 2;
+      &.izquierda {
+        padding-left: 1rem;
+      }
+
+      &.derecha {
+        padding-right: 1rem;
+      }
+      &:hover {
+        cursor: pointer;
+        fill: white;
+      }
+    }
+  }
+}
