@@ -10,6 +10,7 @@ import { Propiedades } from "./components/propiedades/Propiedades";
 import { SubirProductos } from "./components/admin/SubirProductos";
 import { EditarPropiedades } from "./components/admin/EditarPropiedades";
 import "../css/style.css";
+import { Servicios } from "./components/servicios/Servicios";
 
 function App() {
   //utilizar context9
@@ -38,6 +39,7 @@ function App() {
 
             {/* PROPIEDADES */}
             <Route path="/propiedades" element={<Propiedades />} />
+            <Route path="/servicios" element={<Servicios />} />
 
             {/* Admin */}
             <Route path="/subirProductos" element={<SubirProductos />} />
