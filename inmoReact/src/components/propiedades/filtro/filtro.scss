@@ -70,6 +70,7 @@
       left: -10%;
       position: absolute;
       background-color: rgba(255, 255, 255);
+      box-shadow: 0px 1px 2px 1px rgba(192, 192, 192, 0.24);
       z-index: 3;
       display: flex;
       flex-direction: column;
@@ -105,6 +106,105 @@
           .check {
             margin-left: 1rem;
           }
+        }
+      }
+    }
+  }
+
+  &.propiedadElegir {
+    .divOculto {
+      height: 100px;
+      width: 190px;
+      left: -10%;
+      position: absolute;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 1px 2px 1px rgba(192, 192, 192, 0.24);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0 0.5rem 0.5rem;
+      border-radius: 8px;
+
+      .seleccionado {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5rem;
+        padding: 0.4rem 0;
+        color: #7d7d7d;
+        .check {
+          pointer-events: none;
+          margin-right: 0.4rem;
+          position: relative;
+          width: 17px;
+          height: 17px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: #f1f1f1;
+          margin-left: -0.5rem;
+          transition: all 0.5s ease;
+          color: black;
+
+          .check {
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  &.precioElegir {
+    .divOculto {
+      height: 140px;
+      width: 450px;
+      left: -63%;
+      position: absolute;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 1px 2px 1px rgba(192, 192, 192, 0.24);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0 0.5rem 0.5rem;
+      border-radius: 8px;
+
+      .containerPrecio {
+        display: flex;
+        justify-content: space-around;
+
+        .condicion {
+          font-weight: 600;
+        }
+      }
+
+      .inputContainer {
+        display: flex;
+        justify-content: space-around;
+        .inputPrecio {
+          height: 3rem;
+          border-radius: 8px;
+          border: 1px solid #a1a1a1;
+          padding: 0 1rem;
+          width: 150px;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      .aplicarFiltro {
+        width: 200px;
+        margin: 0 auto;
+        height: 2rem;
+        background-color: black;
+        border: none;
+        color: white;
+        font-weight: 600;
+        transform: skew(-21deg);
+
+        &:hover {
+          cursor: pointer;
         }
       }
     }

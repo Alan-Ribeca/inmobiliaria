@@ -20,6 +20,7 @@ export const Propiedades = () => {
     <>
       <Filtro />
       <h1 className="titlePropiedades">Propiedades</h1>
+      <p className="cantidadProp">{propiedades.length} Propiedades en total</p>
       <section className="containerCard">
         {propiedades.map((propiedad) => (
           <Propiedad key={propiedad._id} propiedad={propiedad} />
