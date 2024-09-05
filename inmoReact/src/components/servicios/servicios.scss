@@ -1,11 +1,19 @@
 .titleServ {
   text-align: center;
-  margin: 1rem 0;
+  margin-top: 1rem;
+}
+
+.infoServ {
+  text-align: center;
+  margin-bottom: 1.3rem;
+  color: #606060;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .containerServ {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   gap: 1rem;
 
@@ -13,24 +21,49 @@
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 1px 3px 1px #d3d3d3;
     border-radius: 8px;
-    width: 600px;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 375px;
+    height: 235px;
+    position: relative;
+    transition: all 0.3s;
 
-    .logoServ {
-      margin-top: 1.2rem;
-      fill: #606060;
+    .logoContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .logoServ {
+        margin-top: 1.2rem;
+        fill: #606060;
+      }
     }
 
     h3 {
-      margin: 0.5rem 0;
+      text-align: center;
+      margin-top: 0.5rem;
     }
 
     .parrafo {
-        text-align: center;
-        width: 60%;
+      text-align: center;
+      font-size: 14px;
+      color: #606060;
+      padding: 0 2rem;
+    }
+
+    ul {
+      margin: 0.5rem 0 0 0.5rem;
+      li {
+        list-style-type: none;
+        margin-bottom: 0.5rem;
+        color: #606060;
+        font-size: 13px;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0px 1px 7px 3px rgba(0, 0, 0, 0.2);
+      .parrafo,
+      ul li {
+        color: #000;
+      }
     }
   }
 }
