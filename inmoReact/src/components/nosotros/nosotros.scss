@@ -1,0 +1,86 @@
+.titleNos {
+  margin: 2rem 0 1rem 0;
+  text-align: center;
+}
+.containerTexto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 43%;
+  margin-top: 0.5rem;
+  .texto {
+    padding-top: 1.5rem;
+    width: 72%;
+    color: #444141;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .textoContactar {
+    margin-top: 3rem;
+    color: #000c5c;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .btnContactar {
+    width: 200px;
+    margin: 0 auto;
+    height: 2rem;
+    background-color: black;
+    border: none;
+    color: white;
+    font-weight: 600;
+    transform: skew(-21deg);
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+  }
+}
+.containerNos {
+  display: flex;
+}
+.nosotros {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 1rem;
+
+  .servicio {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 3px 1px #d3d3d3;
+    border-radius: 8px;
+    width: 375px;
+    height: 180px;
+    margin-top: 2rem;
+    position: relative;
+    transition: all 0.3s;
+
+    .logoContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .logoServ {
+        margin-top: 1.2rem;
+        fill: #0a3987;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .parrafo {
+      text-align: center;
+      font-size: 14px;
+      color: #606060;
+      padding: 0 2rem;
+    }
+
+    &:hover {
+      box-shadow: 0px 1px 7px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+}

@@ -9,8 +9,10 @@ import { CRMContext, CRMProvider } from "./context/CRMContext";
 import { Propiedades } from "./components/propiedades/Propiedades";
 import { SubirProductos } from "./components/admin/SubirProductos";
 import { EditarPropiedades } from "./components/admin/EditarPropiedades";
-import "../css/style.css";
 import { Servicios } from "./components/servicios/Servicios";
+import { Nosotros } from "./components/nosotros/Nosotros";
+import { Contacto } from "./components/contacto/Contacto";
+import "../css/style.css";
 
 function App() {
   //utilizar context9
@@ -37,9 +39,11 @@ function App() {
             <Route path="/crear-usuario" element={<CrearCuenta />} />
             <Route path="/reset-password" element={<EditarCuenta />} />
 
-            {/* PROPIEDADES */}
+            {/* Cliente */}
             <Route path="/propiedades" element={<Propiedades />} />
             <Route path="/servicios" element={<Servicios />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/contacto" element={<Contacto />} />
 
             {/* Admin */}
             <Route path="/subirProductos" element={<SubirProductos />} />
