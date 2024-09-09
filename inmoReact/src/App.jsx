@@ -13,6 +13,7 @@ import { Servicios } from "./components/servicios/Servicios";
 import { Nosotros } from "./components/nosotros/Nosotros";
 import { Contacto } from "./components/contacto/Contacto";
 import "../css/style.css";
+import { PropiedadId } from "./components/propiedades/PropiedadId";
 
 function App() {
   //utilizar context9
@@ -44,6 +45,7 @@ function App() {
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/propiedades/:idPropiedad" element={<PropiedadId />} />
 
             {/* Admin */}
             <Route path="/subirProductos" element={<SubirProductos />} />
