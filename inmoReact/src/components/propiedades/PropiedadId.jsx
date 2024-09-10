@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBath, faBed } from "@fortawesome/free-solid-svg-icons";
 import "./propiedadId.scss";
+import { useState } from "react";
 export const PropiedadId = () => {
   const location = useLocation();
   const { propiedad } = location.state;
@@ -23,12 +24,16 @@ export const PropiedadId = () => {
   } = propiedad;
   const antiguedad = 2024 - anoPropiedad;
 
+  const [actualizarImg, setActualizarImg] = useState(0)
+
+console.log(actualizarImg)
+
   return (
     <>
       <section className="cardImagenes">
         <div className="imgPrincipal">
           <img
-            src={`http://localhost:2000/uploads/${imagenes[0]}`}
+            src={`http://localhost:2000/uploads/${imagenes[actualizarImg]}`}
             alt="Imagen de la propiedad"
             className="imgPrinc"
           />
@@ -40,6 +45,7 @@ export const PropiedadId = () => {
               src={`http://localhost:2000/uploads/${imagen}`}
               alt={`Imagen ${index + 1} de la propiedad`}
               className="imgSecu"
+              onClick={() => setActualizarImg(index)}
             />
           ))}
         </div>
