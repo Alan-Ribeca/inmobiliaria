@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBath, faBed } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./propiedad.scss";
+import { useState } from "react";
 export const Propiedad = ({ propiedad }) => {
   const {
     titulo,
@@ -12,12 +13,26 @@ export const Propiedad = ({ propiedad }) => {
     _id,
   } = propiedad;
 
+  const [actualizarImg, setActualizarImg] = useState(0);
+
+  function handleNextImg() {
+    setActualizarImg((prevIndex) =>
+      prevIndex === imagenes.length - 1 ? 0 : prevIndex + 1
+    );
+  }
+
+  function handlePrevImg() {
+    setActualizarImg((prevIndex) =>
+      prevIndex === 0 ? imagenes.length - 1 : prevIndex - 1
+    );
+  }
+
   return (
     <>
       <section
         className="containerProp"
         style={{
-          backgroundImage: `url(http://localhost:2000/uploads/${imagenes[0]})`,
+          backgroundImage: `url(http://localhost:2000/uploads/${imagenes[actualizarImg]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           width: "450px",
@@ -102,9 +117,12 @@ export const Propiedad = ({ propiedad }) => {
           </Link>
         </button>
         <div className="puntos">
-          <span className="punto"></span>
-          <span className="punto marcado"></span>
-          <span className="punto"></span>
+          {imagenes.map((_, index) => (
+            <span
+              key={index}
+              className={`punto ${index === actualizarImg ? "marcado" : ""}`}
+            ></span>
+          ))}
         </div>
         <div className="flechaImg">
           <svg
@@ -114,6 +132,7 @@ export const Propiedad = ({ propiedad }) => {
             fill="currentColor"
             className="flechaCambiar izquierda"
             viewBox="0 0 16 16"
+            onClick={() => handlePrevImg()}
           >
             <path
               fillRule="evenodd"
@@ -127,6 +146,7 @@ export const Propiedad = ({ propiedad }) => {
             fill="currentColor"
             className="flechaCambiar derecha"
             viewBox="0 0 16 16"
+            onClick={() => handleNextImg()}
           >
             <path
               fillRule="evenodd"
