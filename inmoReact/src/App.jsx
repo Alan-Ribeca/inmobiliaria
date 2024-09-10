@@ -14,6 +14,7 @@ import { Nosotros } from "./components/nosotros/Nosotros";
 import { Contacto } from "./components/contacto/Contacto";
 import "../css/style.css";
 import { PropiedadId } from "./components/propiedades/PropiedadId";
+import { Footer } from "./components/footer/Footer";
 
 function App() {
   //utilizar context9
@@ -52,6 +53,9 @@ function App() {
             <Route path="/editarProductos" element={<EditarPropiedades />} />
           </Routes>
         </main>
+        <footer>
+          <Footer />
+        </footer>
       </CRMProvider>
     </BrowserRouter>
   );
