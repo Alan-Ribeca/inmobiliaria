@@ -42,12 +42,12 @@ export const Navbar = () => {
             </li>
             <li className="liNav">
               {" "}
-              <Link to="/propiedades" className="enlaces">
+              <Link to="/subirProductos" className="enlaces">
                 Agregar proopiedades
               </Link>
             </li>
             <li className="liNav">
-              <Link to="/servicios" className="enlaces">
+              <Link to="/editarProductos" className="enlaces">
                 Editar propiedades
               </Link>
             </li>

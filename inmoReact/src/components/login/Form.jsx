@@ -31,7 +31,7 @@ export const Form = () => {
         title: "Iniciar sesión exitosa",
         text: "¡Bienvenido!",
       });
-      navigate("/propiedades");
+      navigate("/");
     } catch (error) {
       Swal.fire({
         icon: "error",
