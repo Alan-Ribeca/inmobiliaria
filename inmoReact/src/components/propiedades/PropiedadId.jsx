@@ -69,7 +69,7 @@ console.log(actualizarImg)
                 {ubicacion}
               </span>
             </div>
-            <h3 className="infoDemas">Informacion sobre la propiedad</h3>
+            <h3 className="infoDemas">Informacion sobre la propiedad:</h3>
             <p className="precio">${precioPropiedad} ARS</p>
             <p className="expensas">Expensas ${expensas} ARS</p>
 
