@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Propiedad } from "../propiedades/Propiedad";
 import datosAxios from "../../config/axios";
-
-export const EditarPropiedades = () => {
+import "./eliminarProp.scss";
+export const EliminarProp = () => {
   const [propiedades, setPropiedades] = useState([]);
 
   const consultarApi = async () => {
@@ -13,7 +13,6 @@ export const EditarPropiedades = () => {
   useEffect(() => {
     consultarApi();
   }, []);
-
   return (
     <section className="containerCard">
       {propiedades.map((propiedad) => (

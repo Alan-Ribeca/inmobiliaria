@@ -4,8 +4,6 @@ import { useState } from "react";
 export const Filtro = () => {
   const [abrir, setAbrir] = useState();
   const handleClick = (tipo) => {
-    console.log(tipo);
-    // setAbrir((prevAbrir) => (prevAbrir === "activo" ? null : "activo"));
     setAbrir((prevAbrir) => (prevAbrir === tipo ? null : tipo));
   };
 

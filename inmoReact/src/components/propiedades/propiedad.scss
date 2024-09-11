@@ -83,45 +83,43 @@
       }
     }
   }
-
-  .btnInfo {
-    margin: 0 auto;
-    margin-bottom: 0.8rem;
-    background-color: rgb(240 240 240 / 34%);
+  a {
     z-index: 2;
-    width: 300px;
-    height: 2.5rem;
-    border: none;
-    border-radius: 7px;
-    font-weight: 700;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition:  0.5s ease;
-    .flecha {
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+    text-decoration: none;
 
-    a {
+    .btnInfo {
+      margin: 0 auto;
+      margin-bottom: 0.8rem;
+      background-color: rgb(240 240 240 / 34%);
+      width: 300px;
+      height: 2.5rem;
+      border: none;
+      border-radius: 7px;
+      font-weight: 700;
       display: flex;
-      text-decoration: none;
+      align-items: center;
+      justify-content: center;
+      transition: 0.5s ease;
       color: #fffffff0;
-    }
-
-    &:hover {
-      transition:  0.5s ease;
-      cursor: pointer;
-      background-color: white;
 
       .flecha {
-        transition:  0.5s ease;
-        opacity: 1;
-        margin-left: 0.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
       }
-
-      a {
+      &:hover {
+        transition: 0.3s ease;
+        cursor: pointer;
+        background-color: white;
         color: black;
+
+        .flecha {
+          transition: 0.3s ease;
+          opacity: 1;
+          margin-left: 0.2rem;
+        }
       }
     }
   }

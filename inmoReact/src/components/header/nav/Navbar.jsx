@@ -52,7 +52,7 @@ export const Navbar = () => {
               </Link>
             </li>
             <li className="liNav">
-              <Link to="/editarProductos" className="enlaces">
+              <Link to="/eliminarPropiedad" className="enlaces">
                 Eliminar Prop
               </Link>
             </li>

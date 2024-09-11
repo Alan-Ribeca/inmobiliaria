@@ -16,6 +16,7 @@ import { PropiedadId } from "./components/propiedades/PropiedadId";
 import { Footer } from "./components/footer/Footer";
 import ScrollToTop from "./components/scroll/ScrollToTop";
 import "../css/style.css";
+import { EliminarProp } from "./components/admin/EliminarProp";
 
 function App() {
   //utilizar contexto
@@ -33,31 +34,29 @@ function App() {
     <BrowserRouter>
       <CRMProvider value={[auth, setAuth]}>
         <Header />
-        <ScrollToTop /> 
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
+        <ScrollToTop />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-              {/* iniciar sesion */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/crear-usuario" element={<CrearCuenta />} />
-              <Route path="/reset-password" element={<EditarCuenta />} />
+            {/* iniciar sesion */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/crear-usuario" element={<CrearCuenta />} />
+            <Route path="/reset-password" element={<EditarCuenta />} />
 
-              {/* Cliente */}
-              <Route path="/propiedades" element={<Propiedades />} />
-              <Route path="/servicios" element={<Servicios />} />
-              <Route path="/nosotros" element={<Nosotros />} />
-              <Route path="/contacto" element={<Contacto />} />
-              <Route
-                path="/propiedades/:idPropiedad"
-                element={<PropiedadId />}
-              />
+            {/* Cliente */}
+            <Route path="/propiedades" element={<Propiedades />} />
+            <Route path="/servicios" element={<Servicios />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/propiedades/:idPropiedad" element={<PropiedadId />} />
 
-              {/* Admin */}
-              <Route path="/subirProductos" element={<SubirProductos />} />
-              <Route path="/editarProductos" element={<EditarPropiedades />} />
-            </Routes>
-          </main>
+            {/* Admin */}
+            <Route path="/subirProductos" element={<SubirProductos />} />
+            <Route path="/editarProductos" element={<EditarPropiedades />} />
+            <Route path="/eliminarPropiedad" element={<EliminarProp />} />
+          </Routes>
+        </main>
         <footer>
           <Footer />
         </footer>

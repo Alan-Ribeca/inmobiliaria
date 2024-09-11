@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBath, faBed } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./propiedad.scss";
 import { useState } from "react";
 export const Propiedad = ({ propiedad }) => {
@@ -27,6 +27,22 @@ export const Propiedad = ({ propiedad }) => {
     );
   }
 
+  const location = useLocation();
+
+  const linkText = () => {
+    if (location.pathname === "/editarProductos") {
+      return "Editar Propiedad";
+    } else if (location.pathname === "/eliminarPropiedad") {
+      return "Eliminar Propiedad";
+    } else {
+      return "Ver más detalles";
+    }
+  };
+  // location.pathname === "/editarProductos"
+  //   ? "Editar Propiedad"
+  //   : "Ver más detalles" || location.pathname === "/eliminarPropiedad"
+  //   ? "Eliminar Propiedad"
+  //   : "ver mas detalles";
   return (
     <>
       <section
@@ -96,9 +112,9 @@ export const Propiedad = ({ propiedad }) => {
             </ul>
           </div>
         </div>
-        <button className="btnInfo">
-          <Link to={`/propiedades/${_id}`} state={{ propiedad }}>
-            Ver mas detalles{" "}
+        <Link to={`/propiedades/${_id}`} state={{ propiedad }}>
+          <button className="btnInfo">
+            {linkText()}
             <span className="flecha">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +130,8 @@ export const Propiedad = ({ propiedad }) => {
                 />
               </svg>
             </span>
-          </Link>
-        </button>
+          </button>
+        </Link>
         <div className="puntos">
           {imagenes.map((_, index) => (
             <span

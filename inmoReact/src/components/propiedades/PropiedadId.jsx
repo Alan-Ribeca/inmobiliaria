@@ -24,9 +24,7 @@ export const PropiedadId = () => {
   } = propiedad;
   const antiguedad = 2024 - anoPropiedad;
 
-  const [actualizarImg, setActualizarImg] = useState(0)
-
-console.log(actualizarImg)
+  const [actualizarImg, setActualizarImg] = useState(0);
 
   return (
     <>
