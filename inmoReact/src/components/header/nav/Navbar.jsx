@@ -43,12 +43,17 @@ export const Navbar = () => {
             <li className="liNav">
               {" "}
               <Link to="/subirProductos" className="enlaces">
-                Agregar proopiedades
+                Agregar Prop
               </Link>
             </li>
             <li className="liNav">
               <Link to="/editarProductos" className="enlaces">
-                Editar propiedades
+                Editar Prop
+              </Link>
+            </li>
+            <li className="liNav">
+              <Link to="/editarProductos" className="enlaces">
+                Eliminar Prop
               </Link>
             </li>
           </ul>
