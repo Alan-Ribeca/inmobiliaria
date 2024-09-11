@@ -15,6 +15,7 @@ export const EliminarProp = () => {
   }, []);
   return (
     <section className="containerCard">
+      <h1 className="elimProp">Eliminar propiedad</h1>
       {propiedades.map((propiedad) => (
         <Propiedad key={propiedad._id} propiedad={propiedad} />
       ))}

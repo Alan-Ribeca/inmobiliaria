@@ -16,6 +16,7 @@ export const EditarPropiedades = () => {
 
   return (
     <section className="containerCard">
+      <h1 className="editProp">Editar propiedad</h1>
       {propiedades.map((propiedad) => (
         <Propiedad key={propiedad._id} propiedad={propiedad} />
       ))}
