@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBath, faBed } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
+import datosAxios from "../../config/axios";
 import "./propiedad.scss";
 import { useState } from "react";
 export const Propiedad = ({ propiedad }) => {
@@ -38,11 +41,46 @@ export const Propiedad = ({ propiedad }) => {
       return "Ver más detalles";
     }
   };
-  // location.pathname === "/editarProductos"
-  //   ? "Editar Propiedad"
-  //   : "Ver más detalles" || location.pathname === "/eliminarPropiedad"
-  //   ? "Eliminar Propiedad"
-  //   : "ver mas detalles";
+
+  const url = () => {
+    if (location.pathname === "/editarProductos") {
+      return `/editarProductos/${_id}`;
+    } else if (location.pathname === "/eliminarPropiedad") {
+      return "";
+    } else {
+      return `/propiedades/${_id}`;
+    }
+  };
+
+  const hanldeEliminar = () => {
+    Swal.fire({
+      title: "¿Seguro que deseas eliminar esta propiedad?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        datosAxios
+          .delete(`/propiedades/${_id}`)
+          .then((response) => {
+            Swal.fire({
+              title: "Propiedad eliminada correctamente",
+              icon: "success",
+              confirmButtonText: "OK",
+            }).then(() => {
+              // Refrescar la página después de hacer clic en "OK"
+              window.location.reload();
+            });
+          })
+          .catch((error) => {
+            Swal.fire("Hubo un error al eliminar la propiedad");
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Se cancelo la eliminacion de la propiedad");
+      }
+    });
+  };
   return (
     <>
       <section
@@ -112,7 +150,16 @@ export const Propiedad = ({ propiedad }) => {
             </ul>
           </div>
         </div>
-        <Link to={`/propiedades/${_id}`} state={{ propiedad }}>
+        <Link
+          to={url()}
+          state={{ propiedad }}
+          onClick={(e) => {
+            if (location.pathname === "/eliminarPropiedad") {
+              e.preventDefault();
+              hanldeEliminar();
+            }
+          }}
+        >
           <button className="btnInfo">
             {linkText()}
             <span className="flecha">

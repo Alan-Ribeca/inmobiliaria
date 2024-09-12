@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import datosAxios from "../../config/axios";
 import { Propiedad } from "./Propiedad";
-import "./propiedades.scss";
 import { Filtro } from "./filtro/Filtro";
+import datosAxios from "../../config/axios";
+import "./propiedades.scss";
 
 export const Propiedades = () => {
   const [propiedades, setPropiedades] = useState([]);
