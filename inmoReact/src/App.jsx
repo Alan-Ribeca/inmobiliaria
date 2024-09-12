@@ -17,6 +17,7 @@ import { Footer } from "./components/footer/Footer";
 import ScrollToTop from "./components/scroll/ScrollToTop";
 import "../css/style.css";
 import { EliminarProp } from "./components/admin/EliminarProp";
+import { EditarPropiedadId } from "./components/admin/EditarPropiedadId";
 
 function App() {
   //utilizar contexto
@@ -55,6 +56,10 @@ function App() {
             <Route path="/subirProductos" element={<SubirProductos />} />
             <Route path="/editarProductos" element={<EditarPropiedades />} />
             <Route path="/eliminarPropiedad" element={<EliminarProp />} />
+            <Route
+              path="/editarProductos/:id"
+              element={<EditarPropiedadId />}
+            />
           </Routes>
         </main>
         <footer>

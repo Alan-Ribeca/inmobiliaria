@@ -44,7 +44,7 @@ export const Propiedad = ({ propiedad }) => {
 
   const url = () => {
     if (location.pathname === "/editarProductos") {
-      return `/editarProductos/${_id}`;
+      return `/editarProductos/:${_id}`;
     } else if (location.pathname === "/eliminarPropiedad") {
       return "";
     } else {

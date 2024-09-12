@@ -16,22 +16,6 @@
   align-items: center;
   width: 1200px;
   margin: 0 auto;
-  .containerInputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-    width: 100%;
-
-    .inputAgregar {
-      height: 2.2rem;
-      border-radius: 6px;
-      border: 1px solid #999;
-      padding-left: 0.5rem;
-      margin-bottom: 0.5rem;
-      width: 90%;
-      padding-right: 1rem;
-    }
-  }
 
   .btnSubirPropiedad {
     width: 12rem;
