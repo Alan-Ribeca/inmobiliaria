@@ -17,6 +17,12 @@
   width: 1200px;
   margin: 0 auto;
 
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .btnSubirPropiedad {
     width: 12rem;
     height: 2rem;
@@ -26,7 +32,6 @@
     font-weight: 600;
     transform: skew(-21deg);
     cursor: pointer;
-
     margin: 1.5rem 0 2rem 0;
     transition: all 0.3s ease;
   }
