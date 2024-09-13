@@ -50,6 +50,15 @@ export const EditarPropiedadId = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    //validar los campos para ver si estan vacios
+    const vacios = Object.values(formData).some((value) => value === "");
+
+    if (vacios) {
+      alert("Todos los campos son obligatorios");
+      return;
+    }
+
     try {
       const {
         titulo,
