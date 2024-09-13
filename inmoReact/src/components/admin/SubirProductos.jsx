@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Inputs } from "./Inputs";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -44,12 +43,12 @@ export const SubirProductos = () => {
 
     const formularioData = new FormData();
     formularioData.append("titulo", formData.titulo);
-    formularioData.append("precio[propiedad]", formData.precioPropiedad); // Cambiado para coincidir con el modelo
+    formularioData.append("precio[propiedad]", formData.precioPropiedad);
     formularioData.append("precio[expensas]", formData.expensas);
     formularioData.append("informacion[superficie]", formData.superficie);
     formularioData.append("informacion[habitaciones]", formData.habitaciones);
     formularioData.append("informacion[banos]", formData.banos);
-    formularioData.append("informacion[coquera]", formData.cochera);
+    formularioData.append("informacion[coquera]", formData.coquera);
     formularioData.append("informacion[anoPropiedad]", formData.anoPropiedad);
     formularioData.append("informacion[descripcion]", formData.descripcion);
     formularioData.append("informacion[ubicacion]", formData.ubicacion);
@@ -69,7 +68,12 @@ export const SubirProductos = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res);
+
+      if (res.status === 200) {
+        console.log("La propiedad se creo correctamente");
+        alert("La propiedad se creo correctamente");
+        navigate("/");
+      }
     } catch (error) {
       console.error(
         "Hubo un error al subir la propiedad:",
