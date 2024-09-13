@@ -51,10 +51,39 @@ export const EditarPropiedadId = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const {
+        titulo,
+        precioPropiedad,
+        expensas,
+        anoPropiedad,
+        banos,
+        coquera,
+        descripcion,
+        habitaciones,
+        superficie,
+        ubicacion,
+      } = formData;
+
+      const propiedadActualizada = {
+        titulo,
+        precio: {
+          propiedad: precioPropiedad,
+          expensas,
+        },
+        informacion: {
+          anoPropiedad,
+          banos,
+          coquera,
+          descripcion,
+          habitaciones,
+          superficie,
+          ubicacion,
+        },
+      };
       // Hacemos la solicitud PUT para actualizar la propiedad
       const res = await datosAxios.put(
         `/propiedades/${propiedad._id}`,
-        formData
+        propiedadActualizada
       );
 
       if (res.status === 200) {

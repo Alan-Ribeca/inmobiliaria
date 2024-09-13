@@ -2,6 +2,7 @@
 import "./inputs.scss";
 
 export const Inputs = ({ formData, handleInputChange }) => {
+  console.log(formData);
   return (
     <ul className="ulInputs">
       <li className="li">
