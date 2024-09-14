@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
   .btnSubirPropiedad {
     width: 12rem;
@@ -34,5 +35,20 @@
     cursor: pointer;
     margin: 1.5rem 0 2rem 0;
     transition: all 0.3s ease;
+  }
+}
+
+.subirLasImg {
+  display: flex;
+  align-items: center;
+  margin: -2.5rem 0 0 2.6rem;
+}
+
+.ulImg {
+  margin-top: 2rem;
+  .ulNameImg {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -31,13 +31,23 @@ export const SubirProductos = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    if (files.length > 5) {
-      alert("Solo puedes subir hasta 5 imágenes");
+
+    // Comprobamos que no haya más de 5 imágenes seleccionadas
+    if (files.length + archivoImg.length > 5) {
+      alert("Solo puedes subir hasta 5 imágenes en total");
       return;
     }
-    setArchivoImg(files);
-  };
 
+    // Actualizamos el estado con las imágenes nuevas
+    setArchivoImg((prevState) => [...prevState, ...files]);
+  };
+  // Función para eliminar una imagen
+  const handleRemoveImage = (index) => {
+    const updatedImages = archivoImg.filter(
+      (_, imgIndex) => imgIndex !== index
+    );
+    setArchivoImg(updatedImages);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -93,7 +103,7 @@ export const SubirProductos = () => {
       <section className="agregarPropiedad">
         <form onSubmit={handleSubmit} className="form">
           <Inputs formData={formData} handleInputChange={handleInputChange} />
-          <div>
+          <div className="subirLasImg">
             <label htmlFor="imagenes">Subir Imágenes (máx. 5)</label>
             <input
               type="file"
@@ -103,6 +113,44 @@ export const SubirProductos = () => {
               accept="image/*"
               onChange={handleImageChange}
             />
+          </div>
+          <div>
+            {archivoImg.length > 0 && (
+              <div
+                style={{
+                  display: "flex",
+                  gap: "1.5rem",
+                  marginTop: "2rem",
+                  flexWrap: "wrap",
+                }}
+              >
+                {archivoImg.map((img, index) => (
+                  <div key={index} style={{ position: "relative" }}>
+                    <img
+                      src={URL.createObjectURL(img)}
+                      alt={`imagen-${index}`}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      fill="currentColor"
+                      className="cruz"
+                      viewBox="0 0 16 16"
+                      style={{ position: "absolute", top: "5px", right: "5px", color: 'red', cursor: 'pointer'}}
+                      onClick={() => handleRemoveImage(index)}
+                    >
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <button className="btnSubirPropiedad" type="submit">
             Agregar Propiedad
