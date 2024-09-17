@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useLocation, useNavigate } from "react-router-dom";
 import { Inputs } from "./Inputs";
 import { useState, useEffect } from "react";
@@ -74,6 +73,21 @@ export const EditarPropiedadId = () => {
     }));
   };
 
+  const handleRemoveImage = (index) => {
+    // Actualizar el estado de archivoImg
+    const updatedArchivoImg = archivoImg.filter((_, imgIndex) => imgIndex !== index);
+    setArchivoImg(updatedArchivoImg);
+  
+    // Actualizar el estado de formData.imagenes
+    const updatedFormDataImages = formData.imagenes.filter((_, imgIndex) => imgIndex !== index);
+    setFormData(prevState => ({
+      ...prevState,
+      imagenes: updatedFormDataImages,
+    }));
+  
+    console.log(`click en la img ${index}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -126,7 +140,7 @@ export const EditarPropiedadId = () => {
       );
 
       if (res.status === 200) {
-        // navigate("/editarProductos");
+        navigate("/editarProductos");
       }
     } catch (error) {
       console.error("Hubo un error al actualizar la propiedad:", error);
@@ -190,7 +204,7 @@ export const EditarPropiedadId = () => {
                         color: "red",
                         cursor: "pointer",
                       }}
-                      // onClick={() => handleRemoveImage(index)}
+                      onClick={() => handleRemoveImage(index)}
                     >
                       <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                     </svg>
