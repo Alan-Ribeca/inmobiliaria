@@ -88,23 +88,17 @@ exports.actualizarPropiedad = async (req, res, next) => {
 
   try {
     // Construir una nueva propiedad
-    let propiedadActualizada = req.body;
+    let propiedadActualizada = { ...req.body };
 
-    // Verificar si hay una nueva imagen o usar la anterior
-    if (req.files) {
-      propiedadActualizada.imagenes = req.files.map((file) => file.filename);
-
-      // Eliminar la imagen de la carpeta uploads
-      const imagenesAnteriores = propiedad.imagenes;
-      for (const imagen of imagenesAnteriores) {
-        const imagenPath = path.join(__dirname, "..", "uploads", imagen);
-        try {
-          await fs.unlink(imagenPath);
-        } catch (error) {
-          console.log(error);
-        }
-      }
+    // Verificar si hay nuevas imágenes
+    if (req.files && req.files.length > 0) {
+      // Mantener imágenes anteriores y agregar las nuevas
+      propiedadActualizada.imagenes = [
+        ...propiedad.imagenes,
+        ...req.files.map((file) => file.filename),
+      ];
     } else {
+      // Si no hay nuevas imágenes, mantener las imágenes anteriores
       propiedadActualizada.imagenes = propiedad.imagenes;
     }
 
@@ -115,13 +109,26 @@ exports.actualizarPropiedad = async (req, res, next) => {
       { new: true }
     );
 
+    // Eliminar imágenes que fueron eliminadas en la actualización (si es necesario)
+    // Puedes pasar una lista de imágenes para eliminar en el cuerpo de la solicitud
+    if (req.body.imagenesParaEliminar) {
+      const imagenesParaEliminar = req.body.imagenesParaEliminar;
+      for (const imagen of imagenesParaEliminar) {
+        const imagenPath = path.join(__dirname, "..", "uploads", imagen);
+        try {
+          await fs.unlink(imagenPath);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+
     res.json(propiedadActualizadaEnBD);
   } catch (error) {
     console.log(error);
     next();
   }
 };
-
 //eliminar propiedad
 exports.eliminarPropiedad = async (req, res, next) => {
   try {

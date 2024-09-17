@@ -1,4 +1,4 @@
- 
+/* eslint-disable no-unused-vars */
 import { useLocation, useNavigate } from "react-router-dom";
 import { Inputs } from "./Inputs";
 import { useState, useEffect } from "react";
@@ -20,7 +20,7 @@ export const EditarPropiedadId = () => {
     habitaciones: "",
     superficie: "",
     ubicacion: "",
-    imagenes: [], // Aquí se almacenarán tanto las imágenes existentes como las nuevas
+    imagenes: [],
   });
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export const EditarPropiedadId = () => {
         habitaciones: propiedad.informacion?.habitaciones || "",
         superficie: propiedad.informacion?.superficie || "",
         ubicacion: propiedad.informacion?.ubicacion || "",
-        imagenes: propiedad.imagenes || [], // Imágenes existentes cargadas
+        imagenes: propiedad.imagenes || [],
         _id: propiedad._id,
       });
     }
@@ -64,16 +64,16 @@ export const EditarPropiedadId = () => {
 
     const imagePreviews = files.map((file) => URL.createObjectURL(file));
 
-    // Almacena las nuevas imágenes para previsualización
-    setArchivoImg((prevState) => [...prevState, ...imagePreviews]);
+    // Almacenar los archivos originales (en lugar de las URLs) en archivoImg
+    setArchivoImg((prevState) => [...prevState, ...files]);
 
-    // Agrega las imágenes nuevas al formData
+    // Agregar las nuevas imágenes previsualizadas
     setFormData((prevState) => ({
       ...prevState,
-      imagenes: [...prevState.imagenes, ...imagePreviews],
+      imagenes: [...prevState.imagenes, ...imagePreviews], // Para previsualización en el front-end
     }));
   };
-  console.log(formData.imagenes);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -101,31 +101,32 @@ export const EditarPropiedadId = () => {
         ubicacion,
       } = formData;
 
-      const propiedadActualizada = {
-        titulo,
-        precio: {
-          propiedad: precioPropiedad,
-          expensas,
-        },
-        informacion: {
-          anoPropiedad,
-          banos,
-          coquera,
-          descripcion,
-          habitaciones,
-          superficie,
-          ubicacion,
-        },
-      };
+      const formularioData = new FormData();
+      formularioData.append("titulo", titulo);
+      formularioData.append("precio[propiedad]", precioPropiedad);
+      formularioData.append("precio[expensas]", expensas);
+      formularioData.append("informacion[superficie]", superficie);
+      formularioData.append("informacion[habitaciones]", habitaciones);
+      formularioData.append("informacion[banos]", banos);
+      formularioData.append("informacion[coquera]", coquera);
+      formularioData.append("informacion[anoPropiedad]", anoPropiedad);
+      formularioData.append("informacion[descripcion]", descripcion);
+      formularioData.append("informacion[ubicacion]", ubicacion);
+
+      // Agregar imágenes nuevas
+      archivoImg.forEach((img) => {
+        formularioData.append("imagenes", img); // Agregar cada archivo
+      });
 
       // Hacemos la solicitud PUT para actualizar la propiedad
       const res = await datosAxios.put(
         `/propiedades/${propiedad._id}`,
-        propiedadActualizada
+        formularioData,
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
 
       if (res.status === 200) {
-        navigate("/editarProductos");
+        // navigate("/editarProductos");
       }
     } catch (error) {
       console.error("Hubo un error al actualizar la propiedad:", error);
@@ -165,8 +166,8 @@ export const EditarPropiedadId = () => {
                     <img
                       src={
                         archivoImg.includes(img)
-                          ? img 
-                          : `http://localhost:2000/uploads/${img}` 
+                          ? img
+                          : `http://localhost:2000/uploads/${img}`
                       }
                       alt={`imagen-${index}`}
                       style={{

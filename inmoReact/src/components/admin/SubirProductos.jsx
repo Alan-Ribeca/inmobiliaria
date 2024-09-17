@@ -48,6 +48,8 @@ export const SubirProductos = () => {
     );
     setArchivoImg(updatedImages);
   };
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
