@@ -7,6 +7,7 @@ export const EditarPropiedadId = () => {
   const [archivoImg, setArchivoImg] = useState([]);
   const location = useLocation();
   const { propiedad } = location.state;
+  const [imagenes, setImagenes] = useState(propiedad.imagenes);
 
   const [formData, setFormData] = useState({
     titulo: "",
@@ -98,6 +99,12 @@ export const EditarPropiedadId = () => {
       }
     }
 
+    // Actualizar el estado local de imágenes
+    const updatedImagenes = imagenes.filter(
+      (_, imgIndex) => imgIndex !== index
+    );
+    setImagenes(updatedImagenes);
+
     // Actualizar formData para reflejar la eliminación en ambos casos
     const updatedFormDataImages = formData.imagenes.filter(
       (_, imgIndex) => imgIndex !== index
@@ -152,17 +159,10 @@ export const EditarPropiedadId = () => {
         formularioData.append("imagenes", img); // Agregar cada archivo
       });
 
-      // Agregar las imágenes eliminadas a la solicitud
-      const imagenesEliminadas = propiedad.imagenes.filter(
-        (img) => !formData.imagenes.includes(img)
-      );
-
-      if (imagenesEliminadas.length > 0) {
-        formularioData.append(
-          "imagenesParaEliminar",
-          JSON.stringify(imagenesEliminadas)
-        );
-      }
+      // Agregar imágenes existentes que no se han eliminado
+      imagenes.forEach((img) => {
+        formularioData.append("imagenesExistentes", img);
+      });
 
       // Hacemos la solicitud PUT para actualizar la propiedad
       const res = await datosAxios.put(
@@ -172,7 +172,8 @@ export const EditarPropiedadId = () => {
       );
 
       if (res.status === 200) {
-        navigate("/editarProductos");
+        alert("Propiedad actualizada correctamente");
+        navigate('/editarProductos'); // Redirección al listado de propiedades
         console.log("Propiedad actualizada correctamente:", res.data);
       }
     } catch (error) {
@@ -213,9 +214,9 @@ export const EditarPropiedadId = () => {
                     <img
                       src={
                         img.startsWith("blob:")
-                          ? img // Si es una nueva imagen (blob URL)
+                          ? img
                           : `http://localhost:2000/uploads/${img}`
-                      } // Si es una imagen del backend
+                      }
                       alt={`imagen-${index}`}
                       style={{
                         width: "100px",

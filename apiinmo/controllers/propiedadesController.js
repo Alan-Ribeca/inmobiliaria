@@ -87,32 +87,13 @@ exports.actualizarPropiedad = async (req, res, next) => {
   }
 
   try {
-    // Construir una nueva propiedad
-    let propiedadActualizada = { ...req.body };
-
-    // Verificar si hay nuevas imágenes
-    if (req.files && req.files.length > 0) {
-      // Mantener imágenes anteriores y agregar las nuevas
-      propiedadActualizada.imagenes = [
-        ...propiedad.imagenes,
-        ...req.files.map((file) => file.filename),
-      ];
-    } else {
-      // Si no hay nuevas imágenes, mantener las imágenes anteriores
-      propiedadActualizada.imagenes = propiedad.imagenes;
-    }
-
-    // Actualizar la propiedad en la base de datos
-    const propiedadActualizadaEnBD = await Propiedades.findByIdAndUpdate(
-      { _id: req.params.idPropiedad },
-      propiedadActualizada,
-      { new: true }
-    );
-
-    // Eliminar imágenes que fueron eliminadas en la actualización (si es necesario)
-    // Puedes pasar una lista de imágenes para eliminar en el cuerpo de la solicitud
+    // Eliminar imágenes especificadas
     if (req.body.imagenesParaEliminar) {
       const imagenesParaEliminar = req.body.imagenesParaEliminar;
+      propiedad.imagenes = propiedad.imagenes.filter(
+        (imagen) => !imagenesParaEliminar.includes(imagen)
+      );
+
       for (const imagen of imagenesParaEliminar) {
         const imagenPath = path.join(__dirname, "..", "uploads", imagen);
         try {
@@ -123,12 +104,32 @@ exports.actualizarPropiedad = async (req, res, next) => {
       }
     }
 
+    // Construir una nueva propiedad
+    let propiedadActualizada = { ...req.body, imagenes: propiedad.imagenes };
+
+    // Verificar si hay nuevas imágenes
+    if (req.files && req.files.length > 0) {
+      // Mantener imágenes anteriores y agregar las nuevas
+      propiedadActualizada.imagenes = [
+        ...propiedad.imagenes,
+        ...req.files.map((file) => file.filename),
+      ];
+    }
+
+    // Actualizar la propiedad en la base de datos
+    const propiedadActualizadaEnBD = await Propiedades.findByIdAndUpdate(
+      { _id: req.params.idPropiedad },
+      propiedadActualizada,
+      { new: true }
+    );
+
     res.json(propiedadActualizadaEnBD);
   } catch (error) {
     console.log(error);
     next();
   }
 };
+
 //eliminar propiedad
 exports.eliminarPropiedad = async (req, res, next) => {
   try {
