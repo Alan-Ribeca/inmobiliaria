@@ -53,7 +53,6 @@ export const EditarPropiedadId = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-
     const totalImages = formData.imagenes.length + files.length;
 
     if (totalImages > 5) {
@@ -61,31 +60,52 @@ export const EditarPropiedadId = () => {
       return;
     }
 
+    // Almacenar las URLs de las imágenes para previsualizarlas
     const imagePreviews = files.map((file) => URL.createObjectURL(file));
 
-    // Almacenar los archivos originales (en lugar de las URLs) en archivoImg
+    // Almacenar los archivos originales en archivoImg para enviarlos al backend
     setArchivoImg((prevState) => [...prevState, ...files]);
 
-    // Agregar las nuevas imágenes previsualizadas
+    // Actualizar formData con las nuevas imágenes previsualizadas
     setFormData((prevState) => ({
       ...prevState,
       imagenes: [...prevState.imagenes, ...imagePreviews], // Para previsualización en el front-end
     }));
   };
 
-  const handleRemoveImage = (index) => {
-    // Actualizar el estado de archivoImg
-    const updatedArchivoImg = archivoImg.filter((_, imgIndex) => imgIndex !== index);
-    setArchivoImg(updatedArchivoImg);
-  
-    // Actualizar el estado de formData.imagenes
-    const updatedFormDataImages = formData.imagenes.filter((_, imgIndex) => imgIndex !== index);
-    setFormData(prevState => ({
+  const handleRemoveImage = async (img, index) => {
+    const isUploadedImg = archivoImg.includes(img);
+
+    if (isUploadedImg) {
+      // Si es una imagen nueva (que acabas de subir)
+      const updatedArchivoImg = archivoImg.filter(
+        (_, imgIndex) => imgIndex !== index
+      );
+      setArchivoImg(updatedArchivoImg);
+    } else {
+      // Si es una imagen preexistente en el backend
+      const imagenAEliminar = img;
+
+      try {
+        await datosAxios.put(
+          `/propiedades/${propiedad._id}`,
+          { imagenesParaEliminar: [imagenAEliminar] },
+          { headers: { "Content-Type": "application/json" } }
+        );
+        console.log(`Eliminación correcta: ${imagenAEliminar}`);
+      } catch (error) {
+        console.error("Error al eliminar la imagen:", error);
+      }
+    }
+
+    // Actualizar formData para reflejar la eliminación en ambos casos
+    const updatedFormDataImages = formData.imagenes.filter(
+      (_, imgIndex) => imgIndex !== index
+    );
+    setFormData((prevState) => ({
       ...prevState,
       imagenes: updatedFormDataImages,
     }));
-  
-    console.log(`click en la img ${index}`);
   };
 
   const handleSubmit = async (e) => {
@@ -132,6 +152,18 @@ export const EditarPropiedadId = () => {
         formularioData.append("imagenes", img); // Agregar cada archivo
       });
 
+      // Agregar las imágenes eliminadas a la solicitud
+      const imagenesEliminadas = propiedad.imagenes.filter(
+        (img) => !formData.imagenes.includes(img)
+      );
+
+      if (imagenesEliminadas.length > 0) {
+        formularioData.append(
+          "imagenesParaEliminar",
+          JSON.stringify(imagenesEliminadas)
+        );
+      }
+
       // Hacemos la solicitud PUT para actualizar la propiedad
       const res = await datosAxios.put(
         `/propiedades/${propiedad._id}`,
@@ -141,6 +173,7 @@ export const EditarPropiedadId = () => {
 
       if (res.status === 200) {
         navigate("/editarProductos");
+        console.log("Propiedad actualizada correctamente:", res.data);
       }
     } catch (error) {
       console.error("Hubo un error al actualizar la propiedad:", error);
@@ -176,13 +209,13 @@ export const EditarPropiedadId = () => {
                 }}
               >
                 {formData.imagenes.map((img, index) => (
-                  <div key={index} style={{ position: "relative" }}>
+                  <div key={img} style={{ position: "relative" }}>
                     <img
                       src={
-                        archivoImg.includes(img)
-                          ? img
+                        img.startsWith("blob:")
+                          ? img // Si es una nueva imagen (blob URL)
                           : `http://localhost:2000/uploads/${img}`
-                      }
+                      } // Si es una imagen del backend
                       alt={`imagen-${index}`}
                       style={{
                         width: "100px",
@@ -204,7 +237,7 @@ export const EditarPropiedadId = () => {
                         color: "red",
                         cursor: "pointer",
                       }}
-                      onClick={() => handleRemoveImage(index)}
+                      onClick={() => handleRemoveImage(img, index)}
                     >
                       <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                     </svg>
