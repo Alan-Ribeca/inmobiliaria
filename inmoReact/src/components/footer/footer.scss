@@ -111,3 +111,50 @@ footer {
     padding: 2rem 0;
   }
 }
+
+@media screen and (max-width: 1250px) {
+  footer {
+    .footer {
+      width: 1045px;
+    }
+    .suscribite input {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 1095px) {
+  footer {
+    .footer {
+      width: 100%;
+      padding: 0;
+    }
+
+    .containerFooter {
+      width: 550px;
+      margin-left: 1.5rem;
+      padding-left: 1.9rem;
+    }
+  }
+
+  .contactanos {
+    margin-left: 1.5rem;
+    padding-left: 1.9rem;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  footer {
+    .containerFooter {
+      width: 470px;
+      padding-left: 0.5rem;
+
+      .texto {
+        width: 82%;
+      }
+    }
+  }
+  .contactanos {
+    padding-left: 0.5rem;
+  }
+}

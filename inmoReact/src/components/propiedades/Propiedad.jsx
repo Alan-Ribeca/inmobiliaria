@@ -87,10 +87,7 @@ export const Propiedad = ({ propiedad }) => {
         className="containerProp"
         style={{
           backgroundImage: `url(http://localhost:2000/uploads/${imagenes[actualizarImg]})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          width: "450px",
-          height: "490px",
+      
         }}
       >
         <div className="colorGris"></div>

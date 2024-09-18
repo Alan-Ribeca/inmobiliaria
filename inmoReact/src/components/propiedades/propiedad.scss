@@ -1,4 +1,8 @@
 .containerProp {
+  background-size: cover;
+  background-position: center;
+  width: 88%;
+  height: 490px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -167,5 +171,43 @@
         fill: white;
       }
     }
+  }
+}
+
+//responsi
+@media screen and (max-width: 1300px) {
+  .containerProp {
+    height: 440px;
+
+    .titleProp {
+      font-size: 1.3rem;
+    }
+    .descripcion {
+      font-size: 0.8rem;
+    }
+
+    .containerInfo .precios .preNumero {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .containerProp {
+    width: 80%;
+    height: 460px;
+
+    .containerInfo .info ul {
+      justify-content: flex-start;
+      .liInfo {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .containerProp {
+    width: 88%;
   }
 }

@@ -11,3 +11,18 @@
 .oculto {
   height: 6rem;
 }
+
+@media screen and (max-width: 980px) {
+  .nav {
+    .logo {
+      padding-left: 2rem;
+    }
+
+    .ulNav .liNav {
+      margin: 0 1.5rem;
+    }
+    button {
+      right: 3%;
+    }
+  }
+}
