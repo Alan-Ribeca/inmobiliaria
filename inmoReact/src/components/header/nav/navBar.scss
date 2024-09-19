@@ -109,3 +109,9 @@
     box-shadow: 0px 1px 1px 0px #a1a1a1;
   }
 }
+
+@media screen and (max-width: 861px) {
+  .nav {
+    display: none;
+  }
+}

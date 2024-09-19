@@ -1,0 +1,46 @@
+@media screen and (min-width: 861px) {
+  .movilNav {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .movilNav {
+    display: block;
+
+    .logo {
+      display: block;
+      margin: 0;
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      .nombre {
+        font-size: 2rem;
+        position: absolute;
+
+        .span {
+          position: absolute;
+          top: 63%;
+          left: 42%;
+        }
+      }
+    }
+
+    .menu {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 2rem;
+      padding-top: 0.5rem;
+
+      .cerrado {
+        display: none;
+      }
+
+      .abierto {
+        display: block;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
