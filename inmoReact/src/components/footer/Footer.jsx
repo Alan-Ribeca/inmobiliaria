@@ -6,11 +6,13 @@ export const Footer = () => {
       <section className="footer">
         <div className="containerFooter">
           <h3 className="titleFooter">Sobre InmoHome</h3>
-          <p className="texto">
-            Somos líderes en el mercado inmobiliario argentino, ofreciendo
-            servicios integrales de compra, venta y alquiler de propiedades
-            desde hace más de 20 años.
-          </p>
+          <div className="textoContainer">
+            <p className="texto">
+              Somos líderes en el mercado inmobiliario argentino, ofreciendo
+              servicios integrales de compra, venta y alquiler de propiedades
+              desde hace más de 20 años.
+            </p>
+          </div>
           <ul>
             <li className="redes">
               <svg
@@ -64,10 +66,12 @@ export const Footer = () => {
         </div>
         <div className="enlaces">
           <h3 className="enlacesTitle">Enlaces rapidos</h3>
-          <Link to={"./propiedades"}>Propiedades</Link>
-          <Link to={"./servicios"}>Servicios</Link>
-          <Link to={"./nosotros"}>Nosotros</Link>
-          <Link to={"./contacto"}>Contacto</Link>
+          <div className="containerEnlaces">
+            <Link to={"./propiedades"}>Propiedades</Link>
+            <Link to={"./servicios"}>Servicios</Link>
+            <Link to={"./nosotros"}>Nosotros</Link>
+            <Link to={"./contacto"}>Contacto</Link>
+          </div>
         </div>
         <div className="contactanos">
           <h3 className="contactanosTitle">Contactanos</h3>
@@ -81,8 +85,10 @@ export const Footer = () => {
           <p className="pSuscrib">
             Recibe nuestras últimas noticias y ofertas exclusivas.
           </p>
-          <input type="email" placeholder="Tu correo electronico" />
-          <button className="btnSusc">Suscribete</button>
+          <div className="inputYboton">
+            <input type="email" placeholder="Tu correo electronico" />
+            <button className="btnSusc">Suscribete</button>
+          </div>
         </div>
       </section>
       <hr className="lineaFooter" />

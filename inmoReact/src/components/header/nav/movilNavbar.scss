@@ -44,3 +44,15 @@
     }
   }
 }
+
+@media screen and (max-width: 650px) {
+  .movilNav {
+    .logo {
+      padding-left: 0.7rem;
+    }
+
+    .menu {
+      margin-right: 0.7rem;
+    }
+  }
+ }

@@ -17,3 +17,9 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .destac {
+    grid-template-columns: 1fr;
+  }
+}

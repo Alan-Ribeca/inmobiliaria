@@ -211,3 +211,17 @@
     width: 88%;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .containerProp {
+    .titleProp {
+      font-size: 1.7rem;
+    }
+    .descripcion {
+      font-size: 1rem;
+    }
+    .containerInfo {
+      margin-bottom: 1.8rem;
+    }
+  }
+}
