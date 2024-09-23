@@ -52,3 +52,21 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+@media screen and (max-width: 1220px) {
+  .agregarPropiedad {
+    width: 100%;
+  }
+  .subirLasImg {
+    margin: 2.5rem 0 0 2.6rem;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .containerDiv {
+    display: flex;
+    width: 81%;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

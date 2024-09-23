@@ -116,7 +116,7 @@ export const SubirProductos = () => {
               onChange={handleImageChange}
             />
           </div>
-          <div>
+          <div className="containerDiv">
             {archivoImg.length > 0 && (
               <div
                 style={{

@@ -25,3 +25,23 @@
     }
   }
 }
+
+@media screen and (max-width: 1220px) {
+  .ulInputs {
+    grid-template-columns: 1fr 1fr;
+
+    .li {
+      align-items: center;
+
+      .input {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .ulInputs .li .input {
+    width: 80%;
+  }
+}
