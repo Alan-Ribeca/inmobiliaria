@@ -69,3 +69,13 @@
     }
   }
 }
+
+@media screen and (max-width: 550px) {
+  .crearCuentaContainer {
+    width: 400px;
+
+    .titleCrearCuenta {
+      margin-bottom: 0.2rem;
+    }
+  }
+}

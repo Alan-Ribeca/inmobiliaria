@@ -90,42 +90,65 @@ export const MovilNavbar = () => {
       ) : (
         <>
           <nav className="movilNav">
-            <div className="containerNav">
-              <ul className="ul">
-                <li className="liNav">
-                  <Link to="/" className="enlaces">
-                    Inicio
-                  </Link>
-                </li>
-                <li className="liNav">
-                  {" "}
-                  <Link to="/propiedades" className="enlaces">
-                    Propiedades
-                  </Link>
-                </li>
-                <li className="liNav">
-                  <Link to="/servicios" className="enlaces">
-                    Servicios
-                  </Link>
-                </li>
-                <li className="liNav">
-                  <Link to="/nosotros" className="enlaces">
-                    Nosotros
-                  </Link>
-                </li>
-                <li className="liNav">
-                  <Link to="/contacto" className="enlaces">
-                    Contacto
-                  </Link>
-                </li>
-              </ul>
-              <Link to="/login">
-                <button onClick={handleCerrarSesion}>
-                  <span className="btnSesion">
-                    {autenticado ? "Cerrar sesion" : "Iniciar sesion"}
-                  </span>
-                </button>
-              </Link>
+            <div className="logo">
+              <p className="nombre">
+                Inmo<span className="span">Home</span>{" "}
+              </p>
+            </div>
+            <div className="menu">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="45"
+                height="45"
+                fill="currentColor"
+                className="menuSvg"
+                viewBox="0 0 16 16"
+                onClick={handleAbrir}
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+                />
+              </svg>
+              <div
+                className={`${menuVisible === true ? "abierto" : "cerrado"}`}
+              >
+                <ul className="ul">
+                  <li className="liNav">
+                    <Link to="/" className="enlaces">
+                      Inicio
+                    </Link>
+                  </li>
+                  <li className="liNav">
+                    {" "}
+                    <Link to="/propiedades" className="enlaces">
+                      Propiedades
+                    </Link>
+                  </li>
+                  <li className="liNav">
+                    <Link to="/servicios" className="enlaces">
+                      Servicios
+                    </Link>
+                  </li>
+                  <li className="liNav">
+                    <Link to="/nosotros" className="enlaces">
+                      Nosotros
+                    </Link>
+                  </li>
+                  <li className="liNav">
+                    <Link to="/contacto" className="enlaces">
+                      Contacto
+                    </Link>
+                  </li>
+                </ul>
+                <Link to="/login">
+                  <button onClick={handleCerrarSesion}>
+                    <span className="btnSesion">
+                      {autenticado ? "Cerrar sesion" : "Iniciar sesion"}
+                    </span>
+                  </button>
+                </Link>
+              </div>
             </div>
           </nav>
         </>

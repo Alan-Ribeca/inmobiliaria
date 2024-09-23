@@ -58,3 +58,14 @@
     }
   }
 }
+
+@media screen and (max-width: 550px) {
+  .login {
+    width: 400px;
+    height: 383px;
+
+    .titleLogin {
+      margin-bottom: 0;
+    }
+  }
+}

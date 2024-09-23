@@ -114,3 +114,37 @@ h1 {
     }
   }
 }
+
+@media screen and (max-width: 1050px) {
+  .contacto {
+    grid-template-columns: 1.2fr 1fr;
+
+    .cardIzquierda {
+      width: 445px;
+    }
+
+    .cardDerecha {
+      width: 87%;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .contacto {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .contacto {
+    grid-template-columns: 1fr;
+
+    .cardIzquierda {
+      width: 89%;
+    }
+    .cardDerecha {
+      width: 87%;
+    }
+  }
+}

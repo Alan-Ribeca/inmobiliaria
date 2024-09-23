@@ -84,3 +84,44 @@
     }
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .containerTexto {
+    width: 32%;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .titleNos {
+    margin: 2rem 0 0 0;
+  }
+  .containerNos {
+    flex-direction: column;
+
+    .containerTexto {
+      width: 100%;
+
+      .texto {
+        padding-top: 0.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .nosotros .servicio {
+    width: 323px;
+    height: 171px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .nosotros {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    .servicio {
+      width: 450px;
+    }
+  }
+}

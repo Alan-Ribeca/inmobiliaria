@@ -54,3 +54,12 @@
     }
   }
 }
+
+@media screen and (max-width: 550px) {
+  .formIniciarSesion {
+    .campo,
+    .recordar {
+      margin-left: 0;
+    }
+  }
+}

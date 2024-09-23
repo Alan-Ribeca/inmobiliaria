@@ -9,6 +9,7 @@ export const Filtro = () => {
 
   return (
     <>
+      <hr className="linea top" />
       <section className="filtros">
         <input
           type="text"
