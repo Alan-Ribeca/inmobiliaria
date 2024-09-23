@@ -1,0 +1,13 @@
+//la class containerCard es tanto para la seccion de "editarPropeidades" como para la de "eliminarProp"
+
+@media screen and (max-width: 1250px) {
+  .containerCard {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .containerCard {
+    grid-template-columns: 1fr;
+  }
+}
