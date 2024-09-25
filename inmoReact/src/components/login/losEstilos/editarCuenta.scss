@@ -83,3 +83,13 @@
     }
   }
 }
+
+@media screen and (max-width: 490px) { 
+  .container {
+    width: 85%;
+
+    .cambiarPassword {
+      max-width: 90%;
+    }
+  }
+}

@@ -328,3 +328,36 @@
     }
   }
 }
+
+@media screen and (max-width: 490px) {
+  .informacion {
+    .cardIzquierdaContainer {
+      .containerInfo {
+        width: 89%;
+        height: auto;
+
+        .infoCompleta ul {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .descripcion {
+        width: 89%;
+      }
+    }
+
+    .cardIzquierda {
+      width: 96.5%;
+    }
+  }
+
+  .cardImagenes {
+    .imgSecundarias {
+      margin-top: 1rem;
+
+      .imgSecu {
+        width: 170px;
+      }
+    }
+  }
+}

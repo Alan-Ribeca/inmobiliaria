@@ -225,3 +225,32 @@
     }
   }
 }
+
+@media screen and (max-width: 490px) {
+  .containerProp {
+    .titleProp {
+      font-size: 1.3rem;
+      max-width: 90%;
+    }
+    .flechaImg {
+      top: 34%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 350px) { 
+  .containerProp {
+    .titleProp {
+      margin-left: 0.5rem;
+    }
+
+    .descripcion {
+      margin-left: 0.5rem;
+    }
+
+    .containerInfo {
+      margin-left: 0.5rem;
+    }
+  }
+} 

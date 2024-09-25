@@ -96,4 +96,10 @@
   .containerServ .servicio {
     width: 95%;
   }
- }
+}
+
+@media screen and (max-width: 490px) {
+  .containerServ .servicio {
+    width: 89%;
+  }
+}

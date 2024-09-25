@@ -70,3 +70,10 @@
     justify-content: space-around;
   }
 }
+
+@media screen and (max-width: 490px) {
+  .subirLasImg {
+    margin: 2.5rem 0 0 0;
+    max-width: 95%;
+  }
+}
