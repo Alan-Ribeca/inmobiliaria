@@ -173,7 +173,7 @@ export const EditarPropiedadId = () => {
 
       if (res.status === 200) {
         alert("Propiedad actualizada correctamente");
-        navigate('/editarProductos'); // Redirección al listado de propiedades
+        navigate("/editarProductos"); // Redirección al listado de propiedades
         console.log("Propiedad actualizada correctamente:", res.data);
       }
     } catch (error) {

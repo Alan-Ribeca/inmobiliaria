@@ -1,3 +1,4 @@
+ 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { Header } from "./components/header/Header";
@@ -19,6 +20,7 @@ import "../css/style.css";
 import { EliminarProp } from "./components/admin/EliminarProp";
 import { EditarPropiedadId } from "./components/admin/EditarPropiedadId";
 
+
 function App() {
   //utilizar contexto
   const [auth, setAuth] = useContext(CRMContext);
@@ -30,6 +32,7 @@ function App() {
       localStorage.setItem("token", "");
     }
   }, []);
+
 
   return (
     <BrowserRouter>
