@@ -12,12 +12,27 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// conectar mongo a la bd
+const dbUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.DB_URL_PROD
+    : process.env.DB_URL_LOCAL;
+
+// Configurar promesas globales
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL);
+
+// Conectar a la base de datos
+mongoose
+  .connect(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Conectado a la base de datos"))
+  .catch((error) =>
+    console.error("Error conectando a la base de datos:", error)
+  );
 
 //definir un dominio para recibir peticiones
-const whiteList = [process.env.FRONTEND_URL];
+const whiteList = [process.env.FRONTEND_URL]; //aca recibe las peticiones dedes localhost 5173 (que es del front) tengo que cambiar esto cuando lo subo a vercel
 
 const corsOptions = {
   origin: (origin, callback) => {
