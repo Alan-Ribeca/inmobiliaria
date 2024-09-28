@@ -22,10 +22,7 @@ mongoose.Promise = global.Promise;
 
 // Conectar a la base de datos
 mongoose
-  .connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(dbUrl)
   .then(() => console.log("Conectado a la base de datos"))
   .catch((error) =>
     console.error("Error conectando a la base de datos:", error)

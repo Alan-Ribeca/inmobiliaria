@@ -1,6 +1,6 @@
 const Usuarios = require("../models/Usuario");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 exports.registrarUsuario = async (req, res) => {
   //leer los datos del usuario y colocarlos en el modelo de la bd
