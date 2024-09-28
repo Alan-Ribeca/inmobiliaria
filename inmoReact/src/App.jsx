@@ -33,7 +33,6 @@ function App() {
     }
   }, []);
 
-
   return (
     <BrowserRouter>
       <CRMProvider value={[auth, setAuth]}>

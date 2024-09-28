@@ -86,7 +86,7 @@ export const Propiedad = ({ propiedad }) => {
       <section
         className="containerProp"
         style={{
-          backgroundImage: `url(http://localhost:2000/uploads/${imagenes[actualizarImg]})`,
+          backgroundImage: `url(${import.meta.env.VITE_BACKEND_URL}/uploads/${imagenes[actualizarImg]})`,
       
         }}
       >

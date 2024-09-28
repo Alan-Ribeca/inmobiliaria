@@ -31,7 +31,7 @@ export const PropiedadId = () => {
       <section className="cardImagenes">
         <div className="imgPrincipal">
           <img
-            src={`http://localhost:2000/uploads/${imagenes[actualizarImg]}`}
+            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${imagenes[actualizarImg]}`}
             alt="Imagen de la propiedad"
             className="imgPrinc"
           />
@@ -40,7 +40,7 @@ export const PropiedadId = () => {
           {imagenes.map((imagen, index) => (
             <img
               key={index}
-              src={`http://localhost:2000/uploads/${imagen}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${imagen}`}
               alt={`Imagen ${index + 1} de la propiedad`}
               className="imgSecu"
               onClick={() => setActualizarImg(index)}

@@ -215,7 +215,7 @@ export const EditarPropiedadId = () => {
                       src={
                         img.startsWith("blob:")
                           ? img
-                          : `http://localhost:2000/uploads/${img}`
+                          : `${import.meta.env.VITE_BACKEND_URL}/uploads/${img}`
                       }
                       alt={`imagen-${index}`}
                       style={{
