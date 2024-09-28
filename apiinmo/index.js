@@ -28,31 +28,12 @@ mongoose
     console.error("Error conectando a la base de datos:", error)
   );
 
-//definir un dominio para recibir peticiones
-const whiteList = [
-  process.env.FRONTEND_URL,
-  "https://inmobiliaria-yu24.onrender.com",
-]; //aca recibe las peticiones dedes localhost 5173 (que es del front) tengo que cambiar esto cuando lo subo a vercel
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    const existe = whiteList.some((dominio) => dominio === origin);
-    if (existe) {
-      callback(null, true);
-    } else {
-      callback(new Error("No permitido por CORS"), false);
-    }
-  },
-};
-
-//habilitar cors
+// Habilitar CORS abierto
 const cors = require("cors");
+app.use(cors()); // Permitir peticiones de cualquier origen
 
 // Habilitar archivos estáticos
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
-//habilitar cors
-app.use(cors(corsOptions));
 
 // rutas de la app
 app.use("/", routes());
@@ -61,7 +42,7 @@ app.use("/", routes());
 const host = process.env.HOST || "0.0.0.0";
 const port = process.env.PORT || 2000;
 
-//iniciar app
+// iniciar app
 app.listen(port, host, () => {
-  console.log("El servidor esta funcionando");
+  console.log("El servidor está funcionando");
 });
