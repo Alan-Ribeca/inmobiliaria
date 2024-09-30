@@ -121,7 +121,13 @@
     gap: 0;
 
     .servicio {
-      width: 450px;
+      width: 90%;
+    }
+  }
+
+  .containerNos {
+    .containerTexto .texto {
+      width: 90%;
     }
   }
 }

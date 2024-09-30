@@ -16,10 +16,10 @@ footer {
   .containerFooter {
     width: 690px;
     .titleFooter {
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
     .texto {
-      font-size: 14px;
+      font-size: 13px;
       width: 60%;
       color: #ffffffbd;
     }
@@ -39,7 +39,7 @@ footer {
     display: flex;
     flex-direction: column;
     .enlacesTitle {
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
 
     .containerEnlaces {
@@ -60,7 +60,7 @@ footer {
 
   .contactanos {
     .contactanosTitle {
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
 
     .infoContacto {
@@ -73,12 +73,12 @@ footer {
     flex-direction: column;
     margin-bottom: 1rem;
     .suscribiteTitle {
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
 
     .pSuscrib {
       color: #ffffffbd;
-      font-size: 14px;
+      font-size: 13px;
       margin-bottom: 0.5rem;
     }
 
@@ -114,6 +114,7 @@ footer {
   .pFinal {
     text-align: center;
     padding: 2rem 0;
+    font-size: 13px;
   }
 }
 
