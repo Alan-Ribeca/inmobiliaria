@@ -1,7 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
+import datosAxios from "../../config/axios";
+import { useNavigate } from "react-router-dom";
 import "./losEstilos/crearCuenta.scss";
 
 export const CrearCuenta = () => {
+  const navigate = useNavigate();
   const [datos, setDatos] = useState({
     email: "",
     usuario: "",
@@ -14,14 +18,21 @@ export const CrearCuenta = () => {
       ...datos,
       [e.target.name]: e.target.value,
     });
-
-    console.log(datos);
   };
 
   //al darle click al boton de crear cuenta
   const handleCrearCuenta = async (e) => {
     e.preventDefault();
-    console.log("creando cuenta...");
+
+    try {
+      const response = await datosAxios.post("/crear-cuenta", datos);
+
+      alert("Usuario creado correctamente");
+      navigate("/login");
+    } catch (error) {
+      console.error("Hubo un error al crear la cuenta: ", error);
+      alert("Error al crear el usuario");
+    }
   };
 
   return (
