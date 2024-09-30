@@ -27,7 +27,7 @@ export const CrearCuenta = () => {
     try {
       const response = await datosAxios.post("/crear-cuenta", datos);
 
-      alert("Usuario creado correctamente");
+      alert("Usuario creado correctamente, ya puedes iniciar sesion");
       navigate("/login");
     } catch (error) {
       console.error("Hubo un error al crear la cuenta: ", error);
