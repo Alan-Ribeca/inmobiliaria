@@ -1,0 +1,122 @@
+.titleSke {
+  height: 35px;
+  width: 25%;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
+  border-radius: 4px;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+.containerGeneralske {
+  display: grid;
+  row-gap: 4.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+
+  .cardSke {
+    width: 85%;
+    height: 490px;
+    padding: 16px;
+    margin: 2.2rem 0;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
+    position: relative;
+    animation: pulse 2.5s infinite ease-in-out;
+
+    .infoSke {
+      position: absolute;
+      width: 92%;
+      top: 52%;
+
+      .subtitleSke,
+      .ubiSke,
+      .precioSke,
+      .logoSke .textoLogoSke,
+      .btnSke {
+        background-color: #e0e0e0;
+        animation: pulseReverse 2.5s infinite ease-in-out;
+      }
+
+      .subtitleSke {
+        height: 35px;
+        border-radius: 7px;
+      }
+
+      .ubiSke {
+        height: 17px;
+        border-radius: 4px;
+        margin-top: 0.3rem;
+        width: 50%;
+      }
+
+      .precioSke {
+        height: 28px;
+        margin-top: 2rem;
+        width: 35%;
+        border-radius: 4px;
+      }
+
+      .logoSke {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+
+        .textoLogoSke {
+          height: 17px;
+          width: 27%;
+          border-radius: 4px;
+          margin-top: 0.3rem;
+        }
+      }
+
+      .btnSke {
+        margin: 0 auto;
+        width: 50%;
+        height: 40px;
+        border: none;
+        border-radius: 22px;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    background-color: #e7e7e7;
+  }
+  50% {
+    background-color: #f2f2f2;
+  }
+}
+
+@keyframes pulseReverse {
+  0%,
+  100% {
+    background-color: #ecebeb;
+  }
+  50% {
+    background-color: #f6f6f6;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .titleSke {
+    width: 40%;
+  }
+  .containerGeneralske {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .containerGeneralske {
+    grid-template-columns: 1fr;
+  }
+}
